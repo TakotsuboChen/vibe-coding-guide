@@ -120,9 +120,10 @@ cp -r .claude/skills/handoff ~/.claude/skills/handoff
 2. 读旧 HANDOFF.md（如有），搬运"失败的尝试"和"已知坑"
 3. 写新 `HANDOFF.md` 到项目根
 4. 旧文件归档到 `.handoffs/时间戳-handoff.md`（进 git）
-5. commit + push 所有变更
+5. **检查 CLAUDE.md 是否需要更新**——`[HANDOFF.md](HANDOFF.md)` 链接是否存在、当前进度是否过时、HEAD SHA 引用是否匹配
+6. commit + push 所有变更（包括 HANDOFF.md、CLAUDE.md、代码变更）
 
-> 别忘了在 CLAUDE.md 里加一行 `[HANDOFF.md](HANDOFF.md)`，这样新会话不用手动说"读 HANDOFF.md"，Claude 会自动加载它。
+> 别忘了在 CLAUDE.md 里加一行 `[HANDOFF.md](HANDOFF.md)`，这样新会话不用手动说"读 HANDOFF.md"，Claude 会自动加载它。handoff skill 会自动检查这一条是否存在，如果缺失会自动追加。
 
 ## 第一次交接写了 HANDOFF.md，第二次怎么办
 

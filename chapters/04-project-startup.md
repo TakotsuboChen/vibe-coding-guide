@@ -79,9 +79,9 @@ git commit -m "feat: 实现最小切片能跑"
 
 ### 步骤 8：更新 CLAUDE.md + 写 HANDOFF.md（让 Claude 写）
 
-> "更新 CLAUDE.md 的'当前进度'一节：标记第一个切片完成，写下一切片目标。同时写一份 HANDOFF.md 到项目根，记录：当前状态、下次会话第一件事、踩了什么坑。"
+> "更新 CLAUDE.md 的'当前进度'一节：标记第一个切片完成，写下一切片目标。同时写一份 HANDOFF.md 到项目根，记录：当前状态、下次会话第一件事、踩了什么坑。检查 CLAUDE.md 里是否有 `[HANDOFF.md](HANDOFF.md)` 链接，如果没有就加上。"
 
-**注意**：HANDOFF.md 不是官方功能，不会自动加载——但如果你在 CLAUDE.md 里写了 `[HANDOFF.md](HANDOFF.md)` 链接，Claude 会识别并加载它。如果没有这条链接，会话开头你说"读 HANDOFF.md"，Claude 就会读。
+**注意**：HANDOFF.md 不是官方功能，不会自动加载——但如果你在 CLAUDE.md 里写了 `[HANDOFF.md](HANDOFF.md)` 链接，Claude 会识别并加载它。如果没有这条链接，会话开头你说"读 HANDOFF.md"，Claude 就会读。**handoff skill 会自动检查 CLAUDE.md 中的链接是否存在**，如果缺失会自动追加。
 
 ## 为什么这 30 分钟能防流产
 

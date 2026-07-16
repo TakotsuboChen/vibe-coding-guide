@@ -78,23 +78,22 @@ title: 会话管理
 A. 装了 handoff skill（本指南附赠）：
 > 你说：/handoff
 
+handoff skill 会自动完成：跑命令验证状态 → 读旧 HANDOFF.md → 写新文件 → 归档 → **检查 CLAUDE.md 是否需要更新** → commit + push。
+
 B. 没装 skill，用自然语言：
-> 你说：我这次会话快结束了，请帮我写一份 HANDOFF.md 到项目根目录。要求：1. 先跑 git status / git log -5 / git diff 确认当前仓库实际状态，不要凭记忆写。2. 每条陈述标 [V]（本次刚验证）或 [?]（仅记忆，需复核）。3. 段落：当前目标 / 已验证状态 / 决策与理由 / 失败的尝试（标不要再试）/ 已知坑 / 下一步 / 留给我的开放问题。4. 如果已存在 HANDOFF.md，先读它的"失败尝试"和"已知坑"段，仍未解决的条目搬到新文件并标 [?]，旧文件移到 .handoffs/时间戳-handoff.md。5. 目标 ≤250 行，400 硬上限。先删叙事，绝不删"失败尝试 / 已知坑 / 下一步"。
+> 你说：我这次会话快结束了，请帮我写一份 HANDOFF.md 到项目根目录。要求：1. 先跑 git status / git log -5 / git diff 确认当前仓库实际状态，不要凭记忆写。2. 每条陈述标 [V]（本次刚验证）或 [?]（仅记忆，需复核）。3. 段落：当前目标 / 已验证状态 / 决策与理由 / 失败的尝试（标不要再试）/ 已知坑 / 下一步 / 留给我的开放问题。4. 如果已存在 HANDOFF.md，先读它的"失败尝试"和"已知坑"段，仍未解决的条目搬到新文件并标 [?]，旧文件移到 .handoffs/时间戳-handoff.md。5. 目标 ≤250 行，400 硬上限。先删叙事，绝不删"失败尝试 / 已知坑 / 下一步"。6. 检查 CLAUDE.md 是否需要更新——`[HANDOFF.md](HANDOFF.md)` 链接是否存在、当前进度是否过时、HEAD SHA 引用是否匹配。
 
 ### 步骤 3：审核 HANDOFF.md
 > 你说：把生成的 HANDOFF.md 完整读给我，我标出哪些 [V] 我要复核。
 
 重点看"Failed approaches"和"Open questions"两段——这两段是下次会话最值钱的。
 
-### 步骤 4：更新 CLAUDE.md
-> 你说：更新 CLAUDE.md 的当前进度一节，标记这个切片完成，写下一切片目标。
+### 步骤 4：commit
+> 你说：把 HANDOFF.md、CLAUDE.md（如有改动）和这次切片的代码一起 commit，message 用 "feat: <切片名>"。
 
-### 步骤 5：commit
-> 你说：把 HANDOFF.md 和这次切片的代码一起 commit，message 用 "feat: <切片名>"。
+注意：装了 handoff skill 的话，步骤 2 的 `/handoff` 已经自动完成了步骤 3-4（包括 CLAUDE.md 检查和 commit），你可以直接跳到步骤 5。
 
-注意：`.handoffs/` 归档目录也会进 git，记录每次交接的完整历史；只有当前 `HANDOFF.md` 是活跃的，旧文件在 `.handoffs/` 里可追溯。
-
-### 步骤 6：清上下文
+### 步骤 5：清上下文
 - 同一任务还要继续且 context 还行 → 不清，继续干
 - 切换到不相关任务 → `/clear`（旧会话仍可 `/resume`）
 - 收工睡觉 → 直接退出，下次 `claude --continue` 或 `/resume`

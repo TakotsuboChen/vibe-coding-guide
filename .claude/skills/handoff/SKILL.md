@@ -80,7 +80,19 @@ git diff
 - 旧文件移到 `.handoffs/{时间戳}-handoff.md`（时间戳格式：YYYYMMDDHHmmss）
 - 确保 `.handoffs/` 目录不写入 `.gitignore`
 
-### 步骤 5：commit + push
+### 步骤 5：检查 CLAUDE.md 是否需要更新
+
+交接的核心是"下次会话能无缝接续"，而 CLAUDE.md 是 Claude 每次启动必读的入口。所以 handoff 时必须检查它：
+
+1. **检查 `[HANDOFF.md](HANDOFF.md)` 链接**：如果 CLAUDE.md 存在且没有 `[HANDOFF.md](HANDOFF.md)` 链接引用，在末尾追加一行 `- [HANDOFF.md](HANDOFF.md) — 跨会话交接文档`（或在已有的链接列表中添加）
+2. **检查当前进度是否过时**：如果本次会话完成了一个切片，更新 CLAUDE.md 中"当前进度"一节的描述
+3. **检查 HEAD SHA 引用**：如果 CLAUDE.md 里有 HANDOFF.md 相关 SHA 引用，更新为当前 HEAD SHA
+
+**注意**：只有 CLAUDE.md 文件存在时才做上述检查；如果不存在，不要创建它（那是 `/init` 或手动创建的职责）。
+
+如果修改了 CLAUDE.md，记得在下一步 commit 时包含它。
+
+### 步骤 6：commit + push
 
 ```bash
 git add -A
@@ -99,7 +111,7 @@ git commit -m "feat: {切片名} + handoff"
 1. 当前状态摘要（完成了什么、下一步做什么）
 2. 测试结果（如果有）
 3. 已 commit 的 SHA
-4. 提醒：下次新会话开始，Claude 会自动加载 CLAUDE.md 和 HANDOFF.md（如果 CLAUDE.md 里有 `[HANDOFF.md](HANDOFF.md)` 链接）
+4. 提醒：下次新会话开始，Claude 会自动加载 CLAUDE.md 和 HANDOFF.md（如果 CLAUDE.md 里有 `[HANDOFF.md](HANDOFF.md)` 链接——handoff 已自动检查并确保此链接存在）
 
 ## 注意事项
 
