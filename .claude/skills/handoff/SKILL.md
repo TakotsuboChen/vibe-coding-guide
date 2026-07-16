@@ -82,7 +82,7 @@ git diff
 
 ### 步骤 5：检查 CLAUDE.md 是否需要更新
 
-交接的核心是"下次会话能无缝接续"，而 CLAUDE.md 是 Claude 每次启动必读的入口。所以 handoff 时必须检查它：
+交接的核心是"下次会话能无缝接续"，CLAUDE.md 是 Claude 每次启动必读的入口。所以 handoff 时必须检查它：
 
 1. **检查 `[HANDOFF.md](HANDOFF.md)` 链接**：如果 CLAUDE.md 存在且没有 `[HANDOFF.md](HANDOFF.md)` 链接引用，在末尾追加一行 `- [HANDOFF.md](HANDOFF.md) — 跨会话交接文档`（或在已有的链接列表中添加）
 2. **检查当前进度是否过时**：如果本次会话完成了一个切片，更新 CLAUDE.md 中"当前进度"一节的描述

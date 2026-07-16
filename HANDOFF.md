@@ -1,28 +1,44 @@
 # HANDOFF — 读全文再开始干活
 
-生成时间: 2026-07-16T23:33 · Git HEAD: 9e0be33
+生成时间: 2026-07-17T00:15 · Git HEAD: ef57942
 恢复方式: 对 Claude 说"读一下 HANDOFF.md，按头部 Git HEAD 复核本文件"。
 信任规则: [V] = 交接时已用命令验证；[?] = 仅记忆未复核，当线索对待。
 
 ## 1. 当前目标
 
-从手写 Jekyll 模板（`_layouts/default.html` + `assets/css/style.css`）迁移至 Just the Docs 主题。已完成全部配置修改和文件清理，尚未 commit + push。
+安装 shuorenhua（说人话）skill 到本项目，并默认调用它改写所有中文输出。已完成安装和 CLAUDE.md 配置，全部 12 个 MD 文件已应用改写。
 
 ## 2. 已验证状态 — 工作实际停在哪
 
-- 手写模板和 CSS 已删除 [V] `git status` 显示 deleted: `_layouts/default.html`, `assets/css/style.css`
-- `_config.yml` 已改为 `remote_theme: just-the-docs/just-the-docs`，并启用了搜索、锚点、页脚、GitHub 链接 [V] `cat _config.yml`
-- 全部 13 个章节 `.md` 文件已添加 `nav_order` frontmatter [V] `git diff --stat` 显示 13 个 chapters 文件有 1 行变更
-- `index.md` 已加 `layout: home`，首页可从侧边栏 click 进入 [V] `cat index.md`
-- `Gemfile` 已加 `jekyll-remote-theme` 依赖 [V] `cat Gemfile`
-- 旧 HANDOFF.md 已归档到 `.handoffs/20260716233300-handoff.md` [V] `ls .handoffs/`
-- 工作树有 18 个未提交变更 [V] `git status`
+- shuorenhua skill 已安装到 `.claude/skills/shuorenhua/`（SKILL.md + 11 个 references 文件）[V] `ls .claude/skills/shuorenhua/`
+- CLAUDE.md 已添加 shuorenhua 文件链接和"默认技能"配置段 [V] `grep shuorenhua CLAUDE.md`
+- 全部 12 个 MD 文件已应用 shuorenhua 去 AI 味改写 [V] `git diff --stat` 显示 12 文件变更
+- 旧 HANDOFF.md 待归档 [V] `cat HANDOFF.md` 确认内容
+
+### 测试/build 输出 tail（本次交接 run 的真实输出）
+
+```
+git diff --stat
+ .claude/skills/handoff/SKILL.md     |  2 +-
+ CLAUDE.md                           | 14 ++++++++--
+ chapters/01-core-mindset.md         | 10 +++----
+ chapters/02-claude-code-overview.md |  8 +++---
+ chapters/03-memory-system.md        |  6 ++--
+ chapters/04-project-startup.md      | 12 +++++----
+ chapters/06-claude-md-handoff.md    |  2 +-
+ chapters/07-session-management.md   |  2 +-
+ chapters/08-skills-mcp.md           |  4 +--
+ chapters/09-bug-spiral.md           |  2 +-
+ chapters/10-learning-path.md        | 12 +++++----
+ chapters/index.md                   |  4 +--
+ 12 files changed, 44 insertions(+), 34 deletions(-)
+```
 
 ## 3. 决策与理由
 
-- **选择 Just the Docs 而非其他框架**：Jekyll 生态、零迁移成本（改 config 即可）、兼容 GitHub Pages、自带搜索功能 [V]——用户确认选择
-- **删除旧模板而非保留**：324 行手写代码全被 Just the Docs 覆盖，保留只会增加维护负担 [V]——cleanup
-- **`nav_order` 用数字而非字母排序**：数字排序可精确控制章节顺序，避免字母序导致第 10 章排在 01 前面 [V]——排序逻辑
+- **项目级安装而非 plugin 安装**：shuorenhua 装到 `.claude/skills/shuorenhua/` 而非用 `/plugin install`，因为项目级安装进版本管理，团队成员共享，且无需 plugin marketplace 依赖 [V]——用户确认选择
+- **CLAUDE.md 声明默认调用而非在 AGENTS.md 配置触发条件**：AGENTS.md 是更细粒度的触发规则，本项目只需一个全局默认行为，写在 CLAUDE.md 更直接 [V]——用户确认选择
+- **docs 场景 minimal 档位**：指南本身已比较干净，无需 aggressive 改写，只做局部清理 [V]——改写结果验证
 
 ## 4. 失败的尝试 — 不要再试
 
@@ -31,9 +47,9 @@
 ## 5. 已知坑
 
 - 第 10 章保留了 CSAPP 和 Nand2Tetris 作为推荐资源，对没有硬件背景的读者可能偏硬——但这是自学 CS 社区公认的最佳路径，保留 [V]
-- 根目录 index.html 可能返回 503（CDN 缓存），但 chapters/ 下的页面正常 [V] 上次验证
 - 用户级 skill 和项目级 skill 是手动同步的——如果只改一个忘了改另一个会分裂。下次改 skill 时要同时改两份 [V]
 - 切换到 Just the Docs 后，旧模板中的 `use_math` 注入（MathJax）不再可用——但指南中没有使用数学公式，无影响 [V] grep 确认
+- 根目录 index.html 可能返回 503（CDN 缓存），但 chapters/ 下的页面正常 [?]——上次交接验证，是否已自动恢复待确认
 
 ## 6. 下一步（有序）
 

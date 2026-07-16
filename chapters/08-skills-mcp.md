@@ -99,7 +99,7 @@ ls ~/.claude/skills/pr-summary/SKILL.md
 
 ## "坏 skill 指导出来的代码会不会变屎山"——会，机制和避免方法
 
-**会。** 这是真实风险，不是吓唬。机制有三层：
+**会。** 机制有三层：
 
 **第一层：description 写歪 → Claude 在不该用的时候用它**
 比如 skill 的 description 是"用于优化代码"，Claude 可能在你只是想加个注释时也触发它，然后用一套不相关的"优化"流程把简单改动搞复杂。症状：简单任务被过度设计。
@@ -111,7 +111,7 @@ ls ~/.claude/skills/pr-summary/SKILL.md
 - 正文 3000 行的 skill 一旦触发，后续每轮都占巨量 token，Claude 真正能用来看你代码的上下文被挤掉
 - 某些 skill 给自己 `allowed-tools: Bash(*)`，意味着 skill 激活期间 Claude 可以不经你确认跑任意 shell 命令
 
-**官方对"装太多"的明确警告**：装太多 skill → 描述被截 → Claude 匹配不到该用的 skill → 又退回裸奔状态。这是个两头堵的陷阱：**装太多反而和没装一样**。预算机制：skill 列表的总字符预算 = 模型上下文窗口的 **1%**。
+**官方对"装太多"的明确警告**：装太多 skill → 描述被截 → Claude 匹配不到该用的 skill → 又退回裸奔状态。**装太多反而和没装一样**。预算机制：skill 列表的总字符预算 = 模型上下文窗口的 **1%**。
 
 **怎么避免坏 skill 把项目带沟里**：
 
