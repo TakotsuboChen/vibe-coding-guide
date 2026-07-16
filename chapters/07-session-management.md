@@ -32,7 +32,7 @@
 
 ```
 ┌─ 新会话开始 → Claude 自动读 CLAUDE.md + Auto Memory
-│  （如有 HANDOFF.md，你说"读 HANDOFF.md"让它读）
+│  （如有 HANDOFF.md，且 CLAUDE.md 里有 `[HANDOFF.md](HANDOFF.md)` 链接，Claude 会自动加载它）
 │
 ├─ 做一个切片（一条能跑的窄功能）
 │
@@ -71,7 +71,7 @@
 
 ### 步骤 2：触发交接（二选一）
 
-A. 装了 ostikwhy-blip skill：
+A. 装了 handoff skill（本指南附赠）：
 > 你说：/handoff
 
 B. 没装 skill，用自然语言：
@@ -88,7 +88,7 @@ B. 没装 skill，用自然语言：
 ### 步骤 5：commit
 > 你说：把 HANDOFF.md 和这次切片的代码一起 commit，message 用 "feat: <切片名>"。
 
-注意：`.handoffs/` 归档目录默认在 `.gitignore` 里，不进 git；只有当前 `HANDOFF.md` 进 git。
+注意：`.handoffs/` 归档目录也会进 git，记录每次交接的完整历史；只有当前 `HANDOFF.md` 是活跃的，旧文件在 `.handoffs/` 里可追溯。
 
 ### 步骤 6：清上下文
 - 同一任务还要继续且 context 还行 → 不清，继续干
@@ -123,6 +123,6 @@ claude --resume
 
 ---
 
-`★ Insight ─────────────────────────────────────`
-/compact 和 /clear 的取舍，本质是"谁来做摘要"的问题。/compact 让 Claude 自动摘要，省事但失控；/clear + HANDOFF.md 让你手动摘要，费力但可控。把摘要权拿回自己手里，是长期项目能延续的根本。收工/开工的两套措辞看起来啰嗦，但它们把"会话边界"从模糊的"我觉得该清了"变成了机械可执行的步骤——这是从"凭感觉"到"靠流程"的关键升级。
-`─────────────────────────────────────────────────`
+> **💡 Insight**
+>
+> /compact 和 /clear 的取舍，本质是"谁来做摘要"的问题。/compact 让 Claude 自动摘要，省事但失控；/clear + HANDOFF.md 让你手动摘要，费力但可控。把摘要权拿回自己手里，是长期项目能延续的根本。收工/开工的两套措辞看起来啰嗦，但它们把"会话边界"从模糊的"我觉得该清了"变成了机械可执行的步骤——这是从"凭感觉"到"靠流程"的关键升级。

@@ -15,8 +15,8 @@
 ## 它和网上其他 Claude Code 教程的区别
 
 - **不假设你会写代码**：每一步都带"你该对 Claude 说什么"的具体对话措辞，可复制粘贴
-- **区分官方功能 vs 社区约定**：清楚标注哪些是 Claude Code 官方支持（如 CLAUDE.md 自动加载）、哪些是社区实践（如 HANDOFF.md，不会自动加载）——避免把社区约定当官方功能
-- **纠正常见误区**：例如"learning mode"其实是第三方插件不是官方功能、装太多 Skills 会变笨有官方硬指标（skill 列表 = 上下文 1%）
+- **区分官方功能 vs 社区约定**：清楚标注哪些是 Claude Code 官方支持（如 CLAUDE.md 自动加载）、哪些是社区实践（如 HANDOFF.md，可通过 CLAUDE.md 里的链接被加载）——避免把社区约定当官方功能
+- **纠正常见误区**：例如装太多 Skills 会变笨有官方硬指标（skill 列表 = 上下文 1%）
 - **给出学习路径**：不只是"怎么用工具"，还有"怎么真的学到东西"——6 个月可量化里程碑
 
 ## 文件结构
@@ -24,7 +24,7 @@
 ```
 chapters/
 ├── index.md                  # 目录 + 快速开始
-├── 01-core-mindset.md        # 核心心智模型
+├── 01-core-mindset.md        # 五个底层认知
 ├── 02-claude-code-overview.md # Claude Code 全景
 ├── 03-memory-system.md       # 记忆体系深潜
 ├── 04-project-startup.md     # 项目启动：第一个 30 分钟

@@ -6,5 +6,3 @@ Thumbs.db
 *.swp
 *~
 
-# Claude Code 会话产物（如有本地生成）
-.handoffs/

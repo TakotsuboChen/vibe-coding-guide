@@ -11,7 +11,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```
 chapters/
 ├── index.md                  # 目录 + 快速开始
-├── 01-core-mindset.md        # 核心心智模型
+├── 01-core-mindset.md        # 五个底层认知
 ├── 02-claude-code-overview.md # Claude Code 全景
 ├── 03-memory-system.md       # 记忆体系深潜
 ├── 04-project-startup.md     # 项目启动：第一个 30 分钟
@@ -30,7 +30,7 @@ chapters/
 
 ## 交接文档（HANDOFF.md）
 
-[HANDOFF.md](HANDOFF.md) 是跨会话交接文档，记录当前状态、死路、下一步、开放问题。它不是 Claude Code 官方功能，但通过此处的链接引用加载。
+[HANDOFF.md](HANDOFF.md) 是跨会话交接文档，记录当前状态、死路、下一步、开放问题。它不是 Claude Code 官方功能，但通过此处的链接引用，Claude 会识别并加载它。
 
 HANDOFF.md 的格式约定（更新时遵守）：
 - 每条陈述标 `[V]`（已验证）或 `[?]`（待复核）
@@ -39,9 +39,8 @@ HANDOFF.md 的格式约定（更新时遵守）：
 - 裁剪顺序：先删叙事 → 压缩 Decisions → **永不裁剪** Failed approaches / Known traps / Verified state / Next steps
 - 会话末尾更新时：替换 + 归档（旧文件移到 `.handoffs/时间戳-handoff.md`）+ 死路前向搬运标 [?]
 
-`.handoffs/` 归档目录已在 `.gitignore` 里，不进 git；只有当前 `HANDOFF.md` 进 git。
+`.handoffs/` 归档目录进 git，记录每次交接的完整历史；只有当前 `HANDOFF.md` 是活跃的，旧文件在 `.handoffs/` 里可追溯。
 
-@HANDOFF.md
 
 ## 常用操作
 
@@ -55,7 +54,7 @@ HANDOFF.md 的格式约定（更新时遵守）：
 
 指南共 11 章 + 参考来源，章节之间是递进关系，不是并列：
 
-1. 核心心智模型 — 奠基（上下文窗口、切片、主动维护、agent 边界、DRI）
+1. 五个底层认知 — 奠基（上下文窗口、切片、主动维护、agent 边界、DRI）
 2-7. 操作层 — 文件/记忆体系、项目启动、Git/GitHub、CLAUDE.md/HANDOFF 实践、会话管理
 8-9. 风险层 — Skills/MCP 生态、Bug 螺旋逃生
 10-11. 学习与防流产 — 6 个月里程碑、行动清单
@@ -64,7 +63,7 @@ HANDOFF.md 的格式约定（更新时遵守）：
 - 每条主张要么有官方文档 URL 支撑，要么标注为社区实践/推论。不编造。
 - "官方功能" vs "社区约定" 必须明确区分（例如 HANDOFF.md/TODO.md 不是 Claude Code 官方功能，要讲清这个边界）。
 - 对话措辞示例（用户该对 Claude 说什么）放在代码块里，方便用户复制粘贴。
-- 每章结尾的 `★ Insight` 块是教育性总结，保持这个模式。
+- 每章结尾的 `> **💡 Insight**` 块是教育性总结，保持这个模式。
 
 ## 协作约定
 

@@ -2,7 +2,7 @@
 
 > 这份指南按章节分文件，方便你按需阅读。章节之间是**递进关系**，不是并列——建议从第 1 章开始读。
 
-1. [核心心智模型](01-core-mindset.md) — 上下文窗口、切片、主动维护、agent 边界、DRI
+1. [五个底层认知](01-core-mindset.md) — 上下文窗口、切片、主动维护、agent 边界、DRI
 2. [Claude Code 全景：文件、记忆、模式、命令](02-claude-code-overview.md) — 目录结构、权限模式、斜杠命令清单
 3. [记忆体系深潜](03-memory-system.md) — Auto Memory、CLAUDE.md、Skills 如何协作
 4. [项目启动：第一个 30 分钟](04-project-startup.md) — 从空文件夹到能跑的东西

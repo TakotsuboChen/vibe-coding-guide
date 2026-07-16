@@ -80,10 +80,10 @@ Claude 会根据你的输入 + 它的判断，生成一份完整的 CLAUDE.md。
 
 这意味着：
 - Claude **不会自动写** HANDOFF.md，必须你触发
-- Claude **不会自动读** HANDOFF.md，必须你说"读 HANDOFF.md"或用 `@HANDOFF.md` 语法导入
-- 如果你要用 HANDOFF.md，要么每次手动让 Claude 读/写，要么装社区 skill 让它半自动化（见下文）
+- Claude **不会自动读** HANDOFF.md——但有一个技巧：在 CLAUDE.md 里写 `[HANDOFF.md](HANDOFF.md)` 链接，Claude 看到这个链接就会识别并加载它。本指南就是这么做的，参见 CLAUDE.md 的"交接文档"一节。
+- 如果 CLAUDE.md 里没有这个链接，你需要说"读 HANDOFF.md"，Claude 就会读
 
-**你需要 HANDOFF.md 吗？** 官方路线（CLAUDE.md + Auto Memory + `/resume`）对 90% 场景够用。**只有项目长到单会话 context 装不下、且需要跨多天跨切片硬核防失忆时，才上 HANDOFF.md**。
+**你需要 HANDOFF.md 吗？** 官方路线（CLAUDE.md + Auto Memory + `/resume`）对 90% 场景够用。**只有项目长到单会话 context 装不下、且需要跨多天跨切片硬核防失忆时，才上 HANDOFF.md**。如果上了，别忘了在 CLAUDE.md 里加一行 `[HANDOFF.md](HANDOFF.md)` 链接让它自动加载。
 
 ## 三件套分工：CLAUDE.md vs HANDOFF.md vs TODO.md
 
@@ -95,7 +95,7 @@ Claude 会根据你的输入 + 它的判断，生成一份完整的 CLAUDE.md。
 
 **口诀**：
 - **CLAUDE.md 是"宪法"**——稳定、规则性、写一次用很久、每会话自动加载
-- **HANDOFF.md 是"白板"**——易变、当前状态、每次擦了重写、不会自动加载
+- **HANDOFF.md 是"白板"**——易变、当前状态、每次擦了重写、不会自动加载（除非在 CLAUDE.md 里加 `[HANDOFF.md](HANDOFF.md)` 链接）
 - **TODO.md 是"购物清单"**——未来、待办、做完划掉、不会自动加载
 
 **关键边界**：
@@ -105,28 +105,30 @@ Claude 会根据你的输入 + 它的判断，生成一份完整的 CLAUDE.md。
 
 ## 社区 skill：让 HANDOFF.md 半自动化
 
-有一个可用的 Claude Code handoff skill：**ostikwhy-blip/claude-code-handoff-skill**（MIT，原生 SKILL.md 形态）。
+本指南附赠了一个 handoff skill，位于项目 `.claude/skills/handoff/`。装到全局即可在所有项目使用：
 
-**装法**：
 ```bash
-cd ~
-git clone https://github.com/ostikwhy-blip/claude-code-handoff-skill.git
-mkdir -p ~/.claude/skills
-cp -r claude-code-handoff-skill ~/.claude/skills/handoff
-ls ~/.claude/skills/handoff/   # 应看到 SKILL.md + assets/
+cp -r .claude/skills/handoff ~/.claude/skills/handoff
 ```
 
-装完进任意 git 项目起 claude 会话，输入 `/handoff`，Claude 会跑 git 三件套 + 重读引用文件 + 重跑测试 → 在项目根写 `HANDOFF.md`，旧文件归档到 `.handoffs/时间戳-handoff.md`。新会话第一句说 "resume from the handoff"，Claude 读文件、按头部 SHA 复核 `[V]` 项、报漂移、抛开放问题、确认计划后继续。
+装完进任意 git 项目起 claude 会话，在会话末尾输入 `/handoff`，Claude 会：
+1. 跑 `git status` / `git log` / `git diff` 确认真实状态
+2. 读旧 HANDOFF.md（如有），搬运"失败的尝试"和"已知坑"
+3. 写新 `HANDOFF.md` 到项目根
+4. 旧文件归档到 `.handoffs/时间戳-handoff.md`（进 git）
+5. commit + push 所有变更
+
+> 别忘了在 CLAUDE.md 里加一行 `[HANDOFF.md](HANDOFF.md)`，这样新会话不用手动说"读 HANDOFF.md"，Claude 会自动加载它。
 
 ## 第一次交接写了 HANDOFF.md，第二次怎么办
 
 社区实际做法是"替换 + 归档 + 死路搬运"，不是增量累积也不是直接覆盖：
 
-- 新 `HANDOFF.md` 写到项目根，旧文件移到 `.handoffs/时间戳-handoff.md`（自动加 .gitignore，不进 git）
+- 新 `HANDOFF.md` 写到项目根，旧文件移到 `.handoffs/时间戳-handoff.md`（进 git，可追溯）
 - **唯一例外**：旧文件里的"Failed approaches / 死路"和"Known traps / 坑"段落，如果仍未解决，会**前向搬运**到新文件并降级标 `[?]`（待复核）
 - 所以本质是"每次写一份全新的，但死路历史被保留"
 
-**不要建 LOG.md/DEVLOG.md**：git 本身就是天然的 chronological log（commit message + `git log --oneline` + `git reflog`），手写日志是重复劳动。`.handoffs/` 归档目录本身就是"关键节点快照序列"，比逐 turn 日志精炼。
+**不要建 LOG.md/DEVLOG.md**：git 本身就是天然的 chronological log（commit message + `git log --oneline` + `git reflog`），手写日志是重复劳动。`.handoffs/` 归档目录本身就是"关键节点快照序列"（进 git，可追溯），比逐 turn 日志精炼。
 
 ## HANDOFF.md 模板（≤250 行，400 硬上限）
 
@@ -175,6 +177,6 @@ FAIL  orders.idempotency.test.ts
 
 ---
 
-`★ Insight ─────────────────────────────────────`
-CLAUDE.md、HANDOFF.md、TODO.md 三件套的分工，本质是软件工程里"策略与机制分离"的应用：机制（技术栈、命令）很少变，进 CLAUDE.md；策略（当前做哪块）天天变，进 HANDOFF.md；未来计划进 TODO.md。HANDOFF.md 虽然不是官方功能，但它的"替换+归档+死路搬运"模式解决了官方 `/compact` 解决不好的"死路遗忘"问题——`/compact` 会把死路也压缩掉，导致下次重试。这是它有价值的根本原因。
-`─────────────────────────────────────────────────`
+> **💡 Insight**
+>
+> CLAUDE.md、HANDOFF.md、TODO.md 三件套的分工，本质是软件工程里"策略与机制分离"的应用：机制（技术栈、命令）很少变，进 CLAUDE.md；策略（当前做哪块）天天变，进 HANDOFF.md；未来计划进 TODO.md。HANDOFF.md 虽然不是官方功能，但通过在 CLAUDE.md 里加 `[HANDOFF.md](HANDOFF.md)` 链接可以自动加载，加上"替换+归档+死路搬运"模式，解决了官方 `/compact` 解决不好的"死路遗忘"问题——`/compact` 会把死路也压缩掉，导致下次重试。这是它有价值的根本原因。
