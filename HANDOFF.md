@@ -1,31 +1,29 @@
 # HANDOFF — 读全文再开始干活
 
-生成时间: 2026-07-16T22:26:00 · Git HEAD: 0cd4eb8
+生成时间: 2026-07-16T22:57 · Git HEAD: 83545e4
 恢复方式: 对 Claude 说"读一下 HANDOFF.md，按头部 Git HEAD 复核本文件"。
 信任规则: [V] = 交接时已用命令验证；[?] = 仅记忆未复核，当线索对待。
 
 ## 1. 当前目标
 
-指南内容修正：纠正 "learning mode 是第三方插件" 的错误描述、将 Insight 块改为 GFM 告示框格式、修正 HANDOFF.md 自动加载机制说明、生成 handoff skill。大部分已完成，剩余提交。
+GitHub Pages 部署已完成——所有章节页面正常渲染（200）。下一步可做内容优化或功能增强。
 
 ## 2. 已验证状态 — 工作实际停在哪
 
-- 所有章节的 `★ Insight` 块已改为 `> **💡 Insight**` 块引用格式，标题和正文之间空一行 [V] git diff 可见
-- 第 10 章 "learning mode" 描述已从"第三方插件"修正为"内置 Output Style，通过 `/config` 启用" [V] git diff 可见
-- 所有引用 `@HANDOFF.md` 的地方已改为 `[HANDOFF.md](HANDOFF.md)` 链接 [V] grep 无残留
-- `.gitignore` 已删除 `.handoffs/` 行，归档目录现在进 git [V] git diff 可见
-- 第 1 章标题"核心心智模型"改为"五个底层认知" [V] git diff 可见
-- 新建 `.claude/skills/handoff/SKILL.md` 项目级 handoff skill [V] ls 确认
-- handoff skill 已安装到 `~/.claude/skills/handoff/` [V] ls 确认
-- 第 6 章社区 skill 一节已更新为引用本指南附赠 skill [V] 内容已确认
-- 第 7 章会话循环中 HANDOFF 加载说明已更新 [V] 内容已确认
-- 已 commit + push 到 remote（`0cd4eb8`）[V] git push 成功
+- 所有页面（chapters/index.html、01-core-mindset.html … 11-checklist.html、references.html）返回 200 [V] curl 验证
+- 侧边栏渲染正常，中文标题正确显示，导航链接格式为 `/vibe-coding-guide/chapters/XX-slug.html` [V] curl 输出可见
+- 侧边栏自动生成：所有 chapters/ 下的 .md 文件按文件名排序，显示为 `{编号}. {title}` [V] 内容已验证
+- 根目录 index.html 返回 503（CDN 缓存延迟，chapters/ 下页面正常）[V] curl 验证
+- `jekyll-relative-links` 插件将 `.md` 链接自动转换为 `.html` [V] 页面渲染正常
+- 无未提交的改动 [V] git status 确认
+- GitHub Pages 设置：`Deploy from branch` → `main` / `/ (root)` [V] GH API 确认
+- GitHub Pages URL: `https://takotsubochen.github.io/vibe-coding-guide/` [V] GH API 确认
 
 ## 3. 决策与理由
 
-- **用 `[HANDOFF.md](HANDOFF.md)` 链接而不是 `@HANDOFF.md`**：Markdown 链接更自然，Claude 同样能识别并加载 [V]——CLAUDE.md 实践已验证
-- **.handoffs/ 进 git**：交接历史本身值得版本控制，可追溯 [V]——删掉 .gitignore 条目即可
-- **handoff skill 放在项目 .claude/ 下**：随项目进 git，其他贡献者也能用；装到全局是 cp 一步 [V]
+- **用自写布局取代主题**：`_layouts/default.html` + `assets/css/style.css` 自写侧边栏布局，而不是 `jekyll-theme-cayman` 等第三方主题 [V]——更灵活，侧边栏导航自动生成，避免主题依赖
+- **根目录 index.md 为着陆页而不是重定向**：用户建议侧边栏目录形式，实现了着陆页 + 侧边栏导航 [V]——符合文档站点习惯
+- **所有章节添加 YAML front matter**：`title` 字段供侧边栏和 `<title>` 标签使用 [V]——Jekyll 必需，无 front matter 的页面无法获取 page.title
 
 ## 4. 失败的尝试 — 不要再试
 
@@ -34,13 +32,14 @@
 ## 5. 已知坑
 
 - 第 10 章保留了 CSAPP 和 Nand2Tetris 作为推荐资源，对没有硬件背景的读者可能偏硬——但这是自学 CS 社区公认的最佳路径，保留 [V]
+- 根目录 index.html 可能出现 503，但 chapters/ 下的页面正常——这是 GitHub Pages CDN 缓存行为，通常几分钟内自动恢复 [V] curl 验证
 
 ## 6. 下一步（有序）
 
-1. 验证所有跨章节链接是否正确（`01-core-mindset.md` 等引用）
-2. 将 `chapters/index.md` 设为 README 后读者第一入口
+1. 验证所有跨章节链接在 GitHub Pages 上是否正常工作（章节间 `.md` 链接 → `.html` 转换）
+2. 验证侧边栏在移动端响应式布局是否正常（已有 `@media` 规则但未测试）
 3. （可选）加 `.github/` 目录和 issue template
 
 ## 7. 留给用户的开放问题
 
-（无）
+- 根目录 index.html 的 503 是否已自动恢复？（通常几分钟内 CDN 缓存会刷新）
