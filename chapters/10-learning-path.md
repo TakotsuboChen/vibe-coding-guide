@@ -1,3 +1,7 @@
+---
+title: 学习路径：6 个月里程碑
+---
+
 # 学习路径：6 个月里程碑
 
 如果你担心"看不到提升的清晰路径，是不是要啃 CS 专业书系统学一遍"。这章给你一条清晰可量化的路径。来源：TeachYourselfCS、Martin Fowler、Simon Willison、Nolan Lawson 等从业者博客。

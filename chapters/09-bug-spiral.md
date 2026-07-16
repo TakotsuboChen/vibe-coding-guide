@@ -1,3 +1,7 @@
+---
+title: Bug 螺旋逃生
+---
+
 # Bug 螺旋逃生与 Rebuild vs Patch
 
 这是项目流产的直接原因。这一章请反复读。

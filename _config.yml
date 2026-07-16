@@ -1,0 +1,20 @@
+title: 业余开发者 Vibe Coding 完全指南
+description: 面向业余编程学习者的 Claude Code 实战指南
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+exclude:
+  - HANDOFF.md
+  - CLAUDE.md
+  - .handoffs/
+  - .claude/
+  - Gemfile
+  - Gemfile.lock
+  - vendor/

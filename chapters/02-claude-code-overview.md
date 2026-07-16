@@ -1,3 +1,7 @@
+---
+title: Claude Code 全景
+---
+
 # Claude Code 全景：文件、记忆、模式、命令
 
 这一章帮你在脑子里画出一张 Claude Code 的结构图。
