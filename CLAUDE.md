@@ -8,14 +8,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - `vibe-coding-guide.md` — 第一版（已过时，保留作历史参考）
 - `vibe-coding-guide-v2.md` — 重构版（当前版本，权威来源）
-- `HANDOFF.md` — 跨会话交接文档（通过下方的 `@HANDOFF.md` 自动导入）
-- `README.md` — 项目门面
+- [HANDOFF.md](HANDOFF.md) — 跨会话交接文档（见下方"交接文档"一节）
+- [README.md](README.md) — 项目门面
 
 内容是《业余开发者 Vibe Coding 完全指南》，面向硬件工程师业余学编程的读者。没有源代码、没有构建系统、没有测试。
 
 ## 交接文档（HANDOFF.md）
 
-HANDOFF.md 通过下方的 `@HANDOFF.md` 导入语法自动加载到上下文，无需手动触发。它是跨会话交接文档，记录当前状态、死路、下一步、开放问题。
+[HANDOFF.md](HANDOFF.md) 是跨会话交接文档，记录当前状态、死路、下一步、开放问题。它不是 Claude Code 官方功能，但通过此处的链接引用加载。
 
 HANDOFF.md 的格式约定（更新时遵守）：
 - 每条陈述标 `[V]`（已验证）或 `[?]`（待复核）
