@@ -22,20 +22,28 @@
 ## 文件结构
 
 ```
-chapters/
-├── index.md                  # 目录 + 快速开始
-├── 01-core-mindset.md        # 五个底层认知
-├── 02-claude-code-overview.md # Claude Code 全景
-├── 03-memory-system.md       # 记忆体系深潜
-├── 04-project-startup.md     # 项目启动：第一个 30 分钟
-├── 05-git-github.md          # Git + GitHub 从零
-├── 06-claude-md-handoff.md   # CLAUDE.md 与交接文档实践
-├── 07-session-management.md  # 会话管理
-├── 08-skills-mcp.md          # Skills 与 MCP 生态
-├── 09-bug-spiral.md          # Bug 螺旋逃生
-├── 10-learning-path.md       # 学习路径
-├── 11-checklist.md           # 防流产清单
-└── references.md             # 参考来源
+docs/                           # 文档内容（Markdown）
+├── index.md                    # 目录 + 快速开始
+├── core-mindset.md             # 五个底层认知
+├── claude-code-overview.md     # Claude Code 全景
+├── memory-system.md            # 记忆体系深潜
+├── project-startup.md          # 项目启动：第一个 30 分钟
+├── git-github.md               # Git + GitHub 从零
+├── claude-md-handoff.md        # CLAUDE.md 与交接文档实践
+├── session-management.md       # 会话管理
+├── skills-mcp.md               # Skills 与 MCP 生态
+├── bug-spiral.md               # Bug 螺旋逃生
+├── learning-path.md            # 学习路径
+├── checklist.md                # 防流产清单
+└── references.md               # 参考来源
+src/                            # 自定义页面和样式
+├── pages/
+│   ├── index.tsx               # 首页（Landing Page）
+│   └── index.module.css
+├── css/
+│   └── custom.css
+sidebars.ts                     # 侧边栏配置
+docusaurus.config.ts            # Docusaurus 配置
 ```
 
 ## 快速开始
@@ -45,6 +53,15 @@ chapters/
 **如果你完全不懂 Git**：从第 5 章开始，它从"git 命令在对话框还是终端"讲起。
 
 **如果你已经在用 Claude Code 但总卡住**：直接跳第 9 章，看你之前的失败模式怎么被官方文档直接命名。
+
+## 本地开发
+
+```bash
+npm install    # 安装依赖
+npm start      # 启动开发服务器（热重载）
+npm run build  # 生产构建
+npm run serve  # 预览构建结果
+```
 
 ## 这份指南本身是怎么写的
 

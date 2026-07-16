@@ -4,30 +4,54 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 仓库性质
 
-这是一个**纯文档仓库**，不是代码项目。内容是《业余开发者 Vibe Coding 完全指南》，面向业余编程学习者。没有源代码、没有构建系统、没有测试。
+这是一个**文档仓库**，用 [Docusaurus](https://docusaurus.io/) 构建静态站点。内容是《业余开发者 Vibe Coding 完全指南》，面向业余编程学习者。
+
+## 技术栈
+
+- **框架**：Docusaurus 3.x (React)
+- **构建**：Node.js 18+，`npm run build`
+- **部署**：GitHub Pages（`.github/workflows/deploy.yml`），push 到 main 后自动构建发布
+
+## 常用命令
+
+```bash
+npm start       # 本地开发服务器（热重载）
+npm run build   # 生产构建，输出到 build/
+npm run serve   # 本地预览构建结果
+```
 
 ## 文件结构
 
 ```
-chapters/
-├── index.md                  # 目录 + 快速开始
-├── 01-core-mindset.md        # 五个底层认知
-├── 02-claude-code-overview.md # Claude Code 全景
-├── 03-memory-system.md       # 记忆体系深潜
-├── 04-project-startup.md     # 项目启动：第一个 30 分钟
-├── 05-git-github.md          # Git + GitHub 从零
-├── 06-claude-md-handoff.md   # CLAUDE.md 与交接文档实践
-├── 07-session-management.md  # 会话管理
-├── 08-skills-mcp.md          # Skills 与 MCP 生态
-├── 09-bug-spiral.md          # Bug 螺旋逃生
-├── 10-learning-path.md       # 学习路径
-├── 11-checklist.md           # 防流产清单
-└── references.md             # 参考来源
+docs/                           # 文档内容（Markdown）
+├── index.md                    # 目录 + 快速开始
+├── core-mindset.md             # 五个底层认知
+├── claude-code-overview.md     # Claude Code 全景
+├── memory-system.md            # 记忆体系深潜
+├── project-startup.md          # 项目启动：第一个 30 分钟
+├── git-github.md               # Git + GitHub 从零
+├── claude-md-handoff.md        # CLAUDE.md 与交接文档实践
+├── session-management.md       # 会话管理
+├── skills-mcp.md               # Skills 与 MCP 生态
+├── bug-spiral.md               # Bug 螺旋逃生
+├── learning-path.md            # 学习路径
+├── checklist.md                # 防流产清单
+└── references.md               # 参考来源
+src/                            # 自定义页面和样式
+├── pages/
+│   ├── index.tsx               # 首页（Landing Page）
+│   └── index.module.css        # 首页样式
+├── css/
+│   └── custom.css              # 全局自定义样式
+└── theme/
+    └── themeConfig.ts
+sidebars.ts                     # 侧边栏配置
+docusaurus.config.ts            # Docusaurus 配置
 ```
 
 - [HANDOFF.md](HANDOFF.md) — 跨会话交接文档（见下方"交接文档"一节）
 - [README.md](README.md) — 项目门面
-- [.claude/skills/shuorenhua/SKILL.md](.claude/skills/shuorenhua/SKILL.md) — 说人话技能：中文去 AI 味改写，清理模板感/翻译腔/表演性技术腔
+- [.claude/skills/shuorenhua/SKILL.md](.claude/skills/shuorenhua/SKILL.md) — 说人话技能
 
 ## 交接文档（HANDOFF.md）
 
@@ -45,10 +69,9 @@ HANDOFF.md 的格式约定（更新时遵守）：
 
 ## 常用操作
 
-由于是纯文档仓库，没有 build/lint/test 命令。日常操作就是编辑 `.md` 文件。
-
-- 预览文档：直接用 VS Code 的 Markdown 预览
-- 查看行数/章节结构：`wc -l chapters/*.md`
+- 本地开发：`npm start`（启动后浏览器打开 http://localhost:3000）
+- 构建：`npm run build`
+- 查看行数/章节结构：`wc -l docs/*.md`
 - 写入大文档时分段追加（避免单次响应过大触发连接中断）：用 Edit 工具逐章 append，每次写一章即验证
 
 ## 文档结构（big picture）

@@ -1,6 +1,6 @@
 ---
-title: CLAUDE.md 正确用法与交接文档实践
-nav_order: 6
+title: CLAUDE.md 与交接文档实践
+sidebar_position: 6
 ---
 
 # CLAUDE.md 正确用法与交接文档实践

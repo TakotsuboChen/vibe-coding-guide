@@ -1,6 +1,6 @@
 ---
 title: 学习路径：6 个月里程碑
-nav_order: 10
+sidebar_position: 10
 ---
 
 # 学习路径：6 个月里程碑

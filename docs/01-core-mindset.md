@@ -1,6 +1,6 @@
 ---
 title: 五个底层认知
-nav_order: 1
+sidebar_position: 1
 ---
 
 # 五个底层认知

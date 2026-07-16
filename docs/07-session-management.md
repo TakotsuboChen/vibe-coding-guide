@@ -1,6 +1,6 @@
 ---
 title: 会话管理
-nav_order: 7
+sidebar_position: 7
 ---
 
 # 会话管理：/clear /compact /resume 与收工开工措辞
@@ -90,7 +90,7 @@ B. 没装 skill，用自然语言：
 重点看"Failed approaches"和"Open questions"两段——这两段是下次会话最值钱的。
 
 ### 步骤 4：commit
-> 你说：把 HANDOFF.md、CLAUDE.md（如有改动）和这次切片的代码一起 commit，message 用 "feat: <切片名>"。
+> 你说：把 HANDOFF.md、CLAUDE.md（如有改动）和这次切片的代码一起 commit，message 用 "feat: `切片名`"。
 
 注意：装了 handoff skill 的话，步骤 2 的 `/handoff` 已经自动完成了步骤 3-4（包括 CLAUDE.md 检查和 commit），你可以直接跳到步骤 5。
 

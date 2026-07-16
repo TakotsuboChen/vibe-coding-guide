@@ -1,6 +1,6 @@
 ---
 title: 参考来源
-nav_order: 12
+sidebar_position: 12
 ---
 
 # 参考来源

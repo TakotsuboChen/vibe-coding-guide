@@ -1,6 +1,6 @@
 ---
 title: Git + GitHub 从零
-nav_order: 5
+sidebar_position: 5
 ---
 
 # Git + GitHub 从零
