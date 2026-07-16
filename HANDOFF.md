@@ -1,6 +1,6 @@
 # HANDOFF — 读全文再开始干活
 
-生成时间: 2026-07-16T22:23:00 · Git HEAD: 1395b5d
+生成时间: 2026-07-16T22:26:00 · Git HEAD: 0cd4eb8
 恢复方式: 对 Claude 说"读一下 HANDOFF.md，按头部 Git HEAD 复核本文件"。
 信任规则: [V] = 交接时已用命令验证；[?] = 仅记忆未复核，当线索对待。
 
@@ -19,7 +19,7 @@
 - handoff skill 已安装到 `~/.claude/skills/handoff/` [V] ls 确认
 - 第 6 章社区 skill 一节已更新为引用本指南附赠 skill [V] 内容已确认
 - 第 7 章会话循环中 HANDOFF 加载说明已更新 [V] 内容已确认
-- 所有修改未 commit，等待本次 handoff 提交 [V] git status
+- 已 commit + push 到 remote（`0cd4eb8`）[V] git push 成功
 
 ## 3. 决策与理由
 
@@ -43,4 +43,4 @@
 
 ## 7. 留给用户的开放问题
 
-- 需要 push 到 remote 吗？当前只 commit 了本地。
+（无）
