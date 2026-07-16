@@ -1,14 +1,14 @@
 # 业余开发者 Vibe Coding 完全指南
 
-> 为硬件工程师、业余编程学习者量身定制的 Claude Code 实战指南。基于 Anthropic 官方文档、GitHub 社区实践、Hacker News、Martin Fowler / Simon Willison / Nolan Lawson 等从业者博客整合。
+> 面向业余编程学习者的 Claude Code 实战指南。基于 Anthropic 官方文档、GitHub 社区实践、Hacker News、Martin Fowler / Simon Willison / Nolan Lawson 等从业者博客整合。
 
-如果你是**懂硬件但不熟软件、想用 Claude Code 做点东西、却总在项目做到一半流产**的人——这份指南是写给你的。
+如果你是**不熟软件、想用 Claude Code 做点东西、却总在项目做到一半流产**的人——这份指南是写给你的。
 
 ## 这份指南解决什么
 
 很多业余开发者用 Claude Code 的真实循环是：
 
-> 不懂代码 → 不会选 Skills/MCP → Claude 没好 skill 指导 + 自己水平差 → 笨上加笨 → 项目报废 → 依然不懂代码 → 0 产出
+> 不懂代码 → 不会选 Skills/MCP → Claude 没好 skill 指导 → 笨上加笨 → 项目报废 → 依然不懂代码 → 0 产出
 
 本指南针对这个死循环的每一环给出可执行的破解方法。
 
@@ -19,19 +19,24 @@
 - **纠正常见误区**：例如"learning mode"其实是第三方插件不是官方功能、装太多 Skills 会变笨有官方硬指标（skill 列表 = 上下文 1%）
 - **给出学习路径**：不只是"怎么用工具"，还有"怎么真的学到东西"——6 个月可量化里程碑
 
-## 目录
+## 文件结构
 
-1. 核心心智模型（上下文窗口、切片、主动维护、agent 边界、DRI）
-2. Claude Code 全景：文件、记忆、模式、命令
-3. 记忆体系深潜（Auto Memory / CLAUDE.md / Skills 怎么协作）
-4. 项目启动：第一个 30 分钟
-5. Git + GitHub 从零（PAT 认证、push 流程、clone vs 只读、License 合规）
-6. CLAUDE.md 正确用法与交接文档实践（官方 vs 民间 skill）
-7. 会话管理：/clear /compact /resume 与收工开工措辞
-8. Skills 与 MCP 生态：选/装/评/换全流程
-9. Bug 螺旋逃生与 Rebuild vs Patch 决策框架
-10. 学习路径：6 个月里程碑 + 避免"只让 Claude 写"
-11. 防流产清单与行动起步
+```
+chapters/
+├── index.md                  # 目录 + 快速开始
+├── 01-core-mindset.md        # 核心心智模型
+├── 02-claude-code-overview.md # Claude Code 全景
+├── 03-memory-system.md       # 记忆体系深潜
+├── 04-project-startup.md     # 项目启动：第一个 30 分钟
+├── 05-git-github.md          # Git + GitHub 从零
+├── 06-claude-md-handoff.md   # CLAUDE.md 与交接文档实践
+├── 07-session-management.md  # 会话管理
+├── 08-skills-mcp.md          # Skills 与 MCP 生态
+├── 09-bug-spiral.md          # Bug 螺旋逃生
+├── 10-learning-path.md       # 学习路径
+├── 11-checklist.md           # 防流产清单
+└── references.md             # 参考来源
+```
 
 ## 快速开始
 
@@ -41,14 +46,9 @@
 
 **如果你已经在用 Claude Code 但总卡住**：直接跳第 9 章，看你之前的失败模式怎么被官方文档直接命名。
 
-## 文件
-
-- [`vibe-coding-guide-v2.md`](./vibe-coding-guide-v2.md) — **当前版本，权威来源**（约 2000 行）
-- [`vibe-coding-guide.md`](./vibe-coding-guide.md) — 第一版（已过时，保留作历史参考）
-
 ## 这份指南本身是怎么写的
 
-它按自己教的方法写成——分切片、每段验证、避免单次大输出。过程中还踩过一次坑：误把 `git init` 跑在 home 根目录，但因为在 push 前发现，删 `.git` 就全清了。这恰好演示了指南里"未 push 的错误完全可逆"原则。这个教训也写进了指南。
+它按自己教的方法写成——分切片、每段验证、避免单次大输出。
 
 ## 贡献
 
@@ -60,7 +60,7 @@
 
 ## 参考来源
 
-指南的所有主张都带 URL 来源，集中在文末"参考来源"一节。权威来源包括：
+指南的所有主张都带 URL 来源，集中在 `chapters/references.md`。权威来源包括：
 
 - Anthropic 官方文档（code.claude.com/docs/en/）
 - Pro Git 中文版、GitHub Docs
