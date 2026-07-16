@@ -1,30 +1,28 @@
 # HANDOFF — 读全文再开始干活
 
-生成时间: 2026-07-16T23:12 · Git HEAD: 3457884
+生成时间: 2026-07-16T23:33 · Git HEAD: 9e0be33
 恢复方式: 对 Claude 说"读一下 HANDOFF.md，按头部 Git HEAD 复核本文件"。
 信任规则: [V] = 交接时已用命令验证；[?] = 仅记忆未复核，当线索对待。
 
 ## 1. 当前目标
 
-handoff skill 已增加 CLAUDE.md 自动检查步骤，指南第 4/6/7 章已同步更新。所有修改已 commit + push。工作树干净，待下一任务。
+从手写 Jekyll 模板（`_layouts/default.html` + `assets/css/style.css`）迁移至 Just the Docs 主题。已完成全部配置修改和文件清理，尚未 commit + push。
 
 ## 2. 已验证状态 — 工作实际停在哪
 
-- 工作树干净，无未提交改动 [V] git status
-- 最新 commit: `3457884` feat: handoff skill 增加 CLAUDE.md 自动检查 + 同步指南章节 [V] git log
-- 项目级 handoff skill 含步骤 5（检查 CLAUDE.md 是否需要更新）[V] cat 确认
-- 用户级 handoff skill 与项目级完全一致 [V] diff 命令验证
-- 本项目的 CLAUDE.md 已有 `[HANDOFF.md](HANDOFF.md)` 链接 [V] grep 确认
-- GitHub Pages 所有章节页面返回 200 [V] 上次验证
-- 第 6 章 handoff skill 描述为 6 步流程 [V] 已读
-- 第 7 章收工流程已合并，handoff 路线更简洁 [V] 已读
-- 第 4 章末尾含 CLAUDE.md 链接检查提醒 [V] 已读
+- 手写模板和 CSS 已删除 [V] `git status` 显示 deleted: `_layouts/default.html`, `assets/css/style.css`
+- `_config.yml` 已改为 `remote_theme: just-the-docs/just-the-docs`，并启用了搜索、锚点、页脚、GitHub 链接 [V] `cat _config.yml`
+- 全部 13 个章节 `.md` 文件已添加 `nav_order` frontmatter [V] `git diff --stat` 显示 13 个 chapters 文件有 1 行变更
+- `index.md` 已加 `layout: home`，首页可从侧边栏 click 进入 [V] `cat index.md`
+- `Gemfile` 已加 `jekyll-remote-theme` 依赖 [V] `cat Gemfile`
+- 旧 HANDOFF.md 已归档到 `.handoffs/20260716233300-handoff.md` [V] `ls .handoffs/`
+- 工作树有 18 个未提交变更 [V] `git status`
 
 ## 3. 决策与理由
 
-- **检查 CLAUDE.md 放在步骤 4 之后、步骤 6 之前**：归档后 commit 前，确保 CLAUDE.md 的修改也能被 commit 包含 [V]——流程决定
-- **用户级 skill 从项目级复制**：`cp .claude/skills/handoff/SKILL.md ~/.claude/skills/handoff/SKILL.md`，保持两份一致 [V]——避免分裂
-- **第 7 章手写 B 方案也加 CLAUDE.md 检查**：即使没装 skill，自然语言措辞也提醒用户要求 Claude 检查 CLAUDE.md [V]——覆盖所有场景
+- **选择 Just the Docs 而非其他框架**：Jekyll 生态、零迁移成本（改 config 即可）、兼容 GitHub Pages、自带搜索功能 [V]——用户确认选择
+- **删除旧模板而非保留**：324 行手写代码全被 Just the Docs 覆盖，保留只会增加维护负担 [V]——cleanup
+- **`nav_order` 用数字而非字母排序**：数字排序可精确控制章节顺序，避免字母序导致第 10 章排在 01 前面 [V]——排序逻辑
 
 ## 4. 失败的尝试 — 不要再试
 
@@ -35,6 +33,7 @@ handoff skill 已增加 CLAUDE.md 自动检查步骤，指南第 4/6/7 章已同
 - 第 10 章保留了 CSAPP 和 Nand2Tetris 作为推荐资源，对没有硬件背景的读者可能偏硬——但这是自学 CS 社区公认的最佳路径，保留 [V]
 - 根目录 index.html 可能返回 503（CDN 缓存），但 chapters/ 下的页面正常 [V] 上次验证
 - 用户级 skill 和项目级 skill 是手动同步的——如果只改一个忘了改另一个会分裂。下次改 skill 时要同时改两份 [V]
+- 切换到 Just the Docs 后，旧模板中的 `use_math` 注入（MathJax）不再可用——但指南中没有使用数学公式，无影响 [V] grep 确认
 
 ## 6. 下一步（有序）
 

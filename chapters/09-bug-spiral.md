@@ -1,5 +1,6 @@
 ---
 title: Bug 螺旋逃生
+nav_order: 9
 ---
 
 # Bug 螺旋逃生与 Rebuild vs Patch

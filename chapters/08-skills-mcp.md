@@ -1,5 +1,6 @@
 ---
 title: Skills 与 MCP 生态
+nav_order: 8
 ---
 
 # Skills 与 MCP 生态：选装评换全流程

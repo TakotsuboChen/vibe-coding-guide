@@ -1,5 +1,7 @@
 ---
 title: 首页
+nav_order: 0
+layout: home
 ---
 
 # 业余开发者 Vibe Coding 完全指南
@@ -8,11 +10,11 @@ title: 首页
 
 如果你是**不熟软件、想用 Claude Code 做点东西、却总在项目做到一半流产的人**——这份指南是写给你的。
 
-## 快速开始
+---
 
-- 📖 **[进入目录](chapters/index.html)** — 从第 1 章开始阅读
-- 📝 **[防流产清单](chapters/11-checklist.html)** — 可勾选的行动清单
-- 📚 **[参考来源](chapters/references.html)** — 所有主张的 URL 出处
+👈 从左侧导航选择章节开始阅读，或从 **[目录](chapters/index.md)** 开始。
+
+---
 
 ## 这份指南解决什么
 

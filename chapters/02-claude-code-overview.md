@@ -1,5 +1,6 @@
 ---
 title: Claude Code 全景
+nav_order: 2
 ---
 
 # Claude Code 全景：文件、记忆、模式、命令

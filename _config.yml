@@ -1,15 +1,24 @@
 title: 业余开发者 Vibe Coding 完全指南
 description: 面向业余编程学习者的 Claude Code 实战指南
+remote_theme: just-the-docs/just-the-docs
+
+# Just the Docs 配置
+search_enabled: true
+heading_anchors: true
+aux_links:
+  "GitHub":
+    - "https://github.com/TakotsuboChen/vibe-coding-guide"
+footer_content: "CC BY 4.0 · <a href=\"https://github.com/TakotsuboChen/vibe-coding-guide\">编辑</a>"
+
+# 保持已有的相对链接支持（章节间互相引用）
 plugins:
   - jekyll-relative-links
+  - jekyll-remote-theme
 relative_links:
   enabled: true
   collections: true
-defaults:
-  - scope:
-      path: ""
-    values:
-      layout: default
+
+# 构建排除
 exclude:
   - HANDOFF.md
   - CLAUDE.md
@@ -18,3 +27,4 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor/
+  - README.md

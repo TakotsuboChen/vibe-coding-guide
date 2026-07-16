@@ -1,5 +1,6 @@
 ---
 title: 会话管理
+nav_order: 7
 ---
 
 # 会话管理：/clear /compact /resume 与收工开工措辞
