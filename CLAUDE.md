@@ -8,25 +8,25 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - `vibe-coding-guide.md` — 第一版（已过时，保留作历史参考）
 - `vibe-coding-guide-v2.md` — 重构版（当前版本，权威来源）
-- `HANDOFF.md` — 跨会话交接文档（见下方"交接文档"一节）
+- `HANDOFF.md` — 跨会话交接文档（通过下方的 `@HANDOFF.md` 自动导入）
 - `README.md` — 项目门面
 
 内容是《业余开发者 Vibe Coding 完全指南》，面向硬件工程师业余学编程的读者。没有源代码、没有构建系统、没有测试。
 
 ## 交接文档（HANDOFF.md）
 
-`HANDOFF.md` **不是 Claude Code 官方功能，不会自动加载**。它是社区约定。要使用它：
+HANDOFF.md 通过下方的 `@HANDOFF.md` 导入语法自动加载到上下文，无需手动触发。它是跨会话交接文档，记录当前状态、死路、下一步、开放问题。
 
-- **会话开头**：对 Claude 说"读一下 HANDOFF.md，按头部 Git HEAD 复核本文件"——Claude 会读取并验证 [V] 项是否还成立
-- **会话末尾**：对 Claude 说"更新 HANDOFF.md"——按指南第 7.7 节的措辞，替换 + 归档（旧文件移到 `.handoffs/时间戳-handoff.md`）+ 死路前向搬运标 [?]
-
-HANDOFF.md 的格式约定：
+HANDOFF.md 的格式约定（更新时遵守）：
 - 每条陈述标 `[V]`（已验证）或 `[?]`（待复核）
-- 头部带 Git HEAD SHA，用于开工会话复核
+- 头部带 Git HEAD SHA，用于开工会话复核 [V] 项是否还成立
 - 目标 ≤250 行，400 硬上限
 - 裁剪顺序：先删叙事 → 压缩 Decisions → **永不裁剪** Failed approaches / Known traps / Verified state / Next steps
+- 会话末尾更新时：替换 + 归档（旧文件移到 `.handoffs/时间戳-handoff.md`）+ 死路前向搬运标 [?]
 
 `.handoffs/` 归档目录已在 `.gitignore` 里，不进 git；只有当前 `HANDOFF.md` 进 git。
+
+@HANDOFF.md
 
 ## 常用操作
 
