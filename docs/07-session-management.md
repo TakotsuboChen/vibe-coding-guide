@@ -111,8 +111,8 @@ claude --continue
 claude --resume
 ```
 
-### 步骤 2：让 Claude 读交接文档（如有 HANDOFF.md）
-> 你说：读一下 HANDOFF.md，然后按头部 Git HEAD SHA 复核每条 [V] 项是否还成立，报告所有漂移，把开放问题抛给我，确认计划后我们继续。
+### 步骤 2：有 HANDOFF.md 时
+Claude 已通过 CLAUDE.md 的 `[HANDOFF.md](HANDOFF.md)` 链接自动加载 HANDOFF.md，无需额外操作。Claude 会自行验证 [V] 项、报告漂移。
 
 ### 步骤 3：没有 HANDOFF.md 时（纯官方路线）
 > 你说：先读 CLAUDE.md 和 README，然后跑 git log --oneline -10 和 git status，告诉我上次停在哪、接下来该做什么。

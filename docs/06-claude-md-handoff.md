@@ -124,7 +124,7 @@ cp -r .claude/skills/handoff ~/.claude/skills/handoff
 5. **检查 CLAUDE.md 是否需要更新**——`[HANDOFF.md](HANDOFF.md)` 链接是否存在、当前进度是否过时、HEAD SHA 引用是否匹配
 6. commit + push 所有变更（包括 HANDOFF.md、CLAUDE.md、代码变更）
 
-> 别忘了在 CLAUDE.md 里加一行 `[HANDOFF.md](HANDOFF.md)`，这样新会话不用手动说"读 HANDOFF.md"，Claude 会自动加载它。handoff skill 会自动检查这一条是否存在，如果缺失会自动追加。
+> 别忘了在 CLAUDE.md 里加一行 `[HANDOFF.md](HANDOFF.md)`，这样新会话 Claude 会自动加载它。handoff skill 会自动检查这一条是否存在，如果缺失会自动追加。
 
 ## 第一次交接写了 HANDOFF.md，第二次怎么办
 
@@ -142,7 +142,6 @@ cp -r .claude/skills/handoff ~/.claude/skills/handoff
 # HANDOFF — 读全文再开始干活
 
 生成时间: 2026-07-16T22:00:00 · Git HEAD: a3f1b2c
-恢复方式: 跑 /handoff 或说 "resume from the handoff"，会按头部 SHA 复核本文件。
 信任规则: [V] = 交接时已用命令验证；[?] = 仅记忆未复核，当线索对待。
 
 ## 1. 当前目标

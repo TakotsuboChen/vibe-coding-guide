@@ -40,7 +40,6 @@ git diff
 # HANDOFF — 读全文再开始干活
 
 生成时间: {当前时间 ISO 8601} · Git HEAD: {当前 HEAD SHA}
-恢复方式: 对 Claude 说"读一下 HANDOFF.md，按头部 Git HEAD 复核本文件"。
 信任规则: [V] = 交接时已用命令验证；[?] = 仅记忆未复核，当线索对待。
 
 ## 1. 当前目标
